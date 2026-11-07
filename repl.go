@@ -27,7 +27,9 @@ func startRepl(conf *config) {
 
 		cmd, exists := conf.commands[firstWord]
 		if exists {
-			cmd.callback(conf)
+			if err := cmd.callback(conf); err != nil {
+				fmt.Printf("Cannot execute command: %v\n", err)
+			}
 		} else {
 			fmt.Println("Unknown command")
 		}

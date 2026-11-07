@@ -7,7 +7,8 @@ type cliCommand struct {
 }
 
 type config struct {
-	commands map[string]cliCommand
+	commands         map[string]cliCommand
+	lastLocationPage int
 }
 
 func initConfig() config {
@@ -23,6 +24,17 @@ func initConfig() config {
 				description: "Displays a help message",
 				callback:    commandHelp,
 			},
+			"map": {
+				name:        "map",
+				description: "Shows next page of locations",
+				callback:    commandMap,
+			},
+			"mapb": {
+				name:        "mapb",
+				description: "Shows previous page of locations",
+				callback:    commandMapb,
+			},
 		},
+		lastLocationPage: 0,
 	}
 }
