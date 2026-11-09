@@ -7,7 +7,7 @@ import (
 )
 
 func commandMap(conf *config) error {
-	locations, err := pokeapi.GetLocations(conf.lastLocationPage)
+	locations, err := pokeapi.GetLocations(conf.lastLocationPage, conf.cache)
 	if err != nil {
 		return err
 	}
@@ -23,7 +23,7 @@ func commandMapb(conf *config) error {
 	if nextPage < 0 {
 		nextPage = 0
 	}
-	locations, err := pokeapi.GetLocations(nextPage)
+	locations, err := pokeapi.GetLocations(nextPage, conf.cache)
 	if err != nil {
 		return err
 	}

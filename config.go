@@ -1,5 +1,11 @@
 package main
 
+import (
+	"time"
+
+	"github.com/botkik-hub/pokedex-boot/pokecache"
+)
+
 type cliCommand struct {
 	name        string
 	description string
@@ -9,6 +15,7 @@ type cliCommand struct {
 type config struct {
 	commands         map[string]cliCommand
 	lastLocationPage int
+	cache            *pokecache.Cache
 }
 
 func initConfig() config {
@@ -36,5 +43,6 @@ func initConfig() config {
 			},
 		},
 		lastLocationPage: 0,
+		cache:            pokecache.NewCache(5 * time.Minute),
 	}
 }
