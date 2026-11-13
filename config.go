@@ -3,6 +3,7 @@ package main
 import (
 	"time"
 
+	"github.com/botkik-hub/pokedex-boot/pokeapi"
 	"github.com/botkik-hub/pokedex-boot/pokecache"
 )
 
@@ -16,6 +17,7 @@ type config struct {
 	commands         map[string]cliCommand
 	lastLocationPage int
 	cache            *pokecache.Cache
+	pokemons         map[string]pokeapi.PokemonData
 }
 
 func initConfig() config {
@@ -46,8 +48,14 @@ func initConfig() config {
 				description: "Shows pokemon names that can be encountred at the selected location. Arguments: Name of the location",
 				callback:    commandExplore,
 			},
+			"catch": {
+				name:        "catch",
+				description: "Throws a pokeball and tries to catch a pokemon, chance depends on the pokemon level",
+				callback:    commandCatch,
+			},
 		},
 		lastLocationPage: 0,
 		cache:            pokecache.NewCache(5 * time.Minute),
+		pokemons:         map[string]pokeapi.PokemonData{},
 	}
 }

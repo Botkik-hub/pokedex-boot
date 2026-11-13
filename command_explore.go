@@ -19,6 +19,5 @@ func commandExplore(conf *config, args ...string) error {
 	for _, poc := range locations.PokemonEncounters {
 		fmt.Println(poc.Pokemon.Name)
 	}
-	conf.lastLocationPage++
 	return nil
 }
