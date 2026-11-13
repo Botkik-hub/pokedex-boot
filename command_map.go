@@ -6,7 +6,10 @@ import (
 	"github.com/botkik-hub/pokedex-boot/pokeapi"
 )
 
-func commandMap(conf *config) error {
+func commandMap(conf *config, args ...string) error {
+	if len(args) != 0 {
+		return fmt.Errorf("Too much arguments, require 0")
+	}
 	locations, err := pokeapi.GetLocations(conf.lastLocationPage, conf.cache)
 	if err != nil {
 		return err
@@ -18,7 +21,10 @@ func commandMap(conf *config) error {
 	return nil
 }
 
-func commandMapb(conf *config) error {
+func commandMapb(conf *config, args ...string) error {
+	if len(args) != 0 {
+		return fmt.Errorf("Too much arguments, require 0")
+	}
 	nextPage := conf.lastLocationPage - 1
 	if nextPage < 0 {
 		nextPage = 0

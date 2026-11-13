@@ -9,7 +9,7 @@ import (
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, ...string) error
 }
 
 type config struct {
@@ -40,6 +40,11 @@ func initConfig() config {
 				name:        "mapb",
 				description: "Shows previous page of locations",
 				callback:    commandMapb,
+			},
+			"explore": {
+				name:        "explore",
+				description: "Shows pokemon names that can be encountred at the selected location. Arguments: Name of the location",
+				callback:    commandExplore,
 			},
 		},
 		lastLocationPage: 0,
