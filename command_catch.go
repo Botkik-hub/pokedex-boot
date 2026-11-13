@@ -27,7 +27,7 @@ func commandCatch(conf *config, args ...string) error {
 	baseExp := pokemon.BaseExperience
 	chanceToCatch := max(minC, min(maxC, k/float64(baseExp)))
 
-	fmt.Printf("Chance to catch %s is %f\n", pokemon.Name, chanceToCatch)
+	//fmt.Printf("Chance to catch %s is %f\n", pokemon.Name, chanceToCatch)
 
 	randNum := rand.Float64()
 	if randNum < chanceToCatch {

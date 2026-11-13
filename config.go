@@ -53,6 +53,11 @@ func initConfig() config {
 				description: "Throws a pokeball and tries to catch a pokemon, chance depends on the pokemon level",
 				callback:    commandCatch,
 			},
+			"inspect": {
+				name:        "inspect",
+				description: "shows stats of the caught pokemon",
+				callback:    commandInspect,
+			},
 		},
 		lastLocationPage: 0,
 		cache:            pokecache.NewCache(5 * time.Minute),
