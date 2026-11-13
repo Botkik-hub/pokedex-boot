@@ -58,6 +58,11 @@ func initConfig() config {
 				description: "shows stats of the caught pokemon",
 				callback:    commandInspect,
 			},
+			"pokedex": {
+				name:        "pokedex",
+				description: "displays caught pokemons",
+				callback:    commandPokedex,
+			},
 		},
 		lastLocationPage: 0,
 		cache:            pokecache.NewCache(5 * time.Minute),
